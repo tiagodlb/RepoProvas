@@ -36,3 +36,7 @@ model Tests {
 
   @@map("tests")
 }
+
+model TeacherDisciplines {
+  id Int @id @default(autoincrement())
+}
