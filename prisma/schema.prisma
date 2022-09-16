@@ -21,4 +21,6 @@ model Users {
 model Categories {
   id   Int    @id @default(autoincrement())
   name String @unique
+
+  @@map("categories")
 }
