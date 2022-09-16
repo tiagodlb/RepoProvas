@@ -17,3 +17,7 @@ model Users {
 
   @@map("users")
 }
+
+model Categories {
+  id Int @id @default(autoincrement())
+}
