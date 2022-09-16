@@ -38,5 +38,6 @@ model Tests {
 }
 
 model TeacherDisciplines {
-  id Int @id @default(autoincrement())
+  id           Int @id @default(autoincrement())
+  teacherId    Int
 }
