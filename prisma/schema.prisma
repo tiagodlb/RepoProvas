@@ -63,3 +63,7 @@ model Disciplines {
 
   @@map("disciplines")
 }
+
+model Terms {
+  id Int @id @default(autoincrement())
+}
