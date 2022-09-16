@@ -57,5 +57,6 @@ model Teachers {
 }
 
 model Disciplines {
-  id Int @id @default(autoincrement())
+  id   Int    @id @default(autoincrement())
+  name String @unique
 }
