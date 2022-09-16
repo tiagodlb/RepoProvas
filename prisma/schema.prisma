@@ -53,3 +53,7 @@ model Teachers {
   name               String               @unique
   teacherDisciplines TeacherDisciplines[]
 }
+
+model Disciplines {
+  id Int @id @default(autoincrement())
+}
