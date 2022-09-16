@@ -67,4 +67,6 @@ model Disciplines {
 model Terms {
   id     Int @id @default(autoincrement())
   number Int @unique
+
+  @@map("terms")
 }
