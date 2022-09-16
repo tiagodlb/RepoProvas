@@ -65,5 +65,6 @@ model Disciplines {
 }
 
 model Terms {
-  id Int @id @default(autoincrement())
+  id     Int @id @default(autoincrement())
+  number Int @unique
 }
