@@ -27,18 +27,20 @@ model Categories {
 }
 
 model Tests {
-  id                  Int        @id @default(autoincrement())
+  id                  Int                @id @default(autoincrement())
   name                String
   pdfUrl              String
-  categories          Categories @relation(fields: [categoryId], references: [id])
+  categories          Categories         @relation(fields: [categoryId], references: [id])
   categoryId          Int
+  teacherDisciplines  TeacherDisciplines @relation(fields: [teacherDisciplineId], references: [id])
   teacherDisciplineId Int
 
   @@map("tests")
 }
 
 model TeacherDisciplines {
-  id           Int @id @default(autoincrement())
+  id           Int     @id @default(autoincrement())
   teacherId    Int
   disciplineId Int
+  tests        Tests[]
 }
