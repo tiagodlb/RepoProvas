@@ -19,15 +19,17 @@ model Users {
 }
 
 model Categories {
-  id   Int    @id @default(autoincrement())
-  name String @unique
+  id    Int     @id @default(autoincrement())
+  name  String  @unique
+  tests Tests[]
 
   @@map("categories")
 }
 
 model Tests {
-  id         Int    @id @default(autoincrement())
+  id         Int        @id @default(autoincrement())
   name       String
   pdfUrl     String
+  categories Categories @relation(fields: [categoryId], references: [id])
   categoryId Int
 }
