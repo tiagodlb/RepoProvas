@@ -1,0 +1,26 @@
+{
+  "name": "projeto20-repoprovas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tiagodlb/RepoProvas.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tiagodlb/RepoProvas/issues"
+  },
+  "homepage": "https://github.com/tiagodlb/RepoProvas#readme",
+  "devDependencies": {
+    "dotenv": "^16.0.2",
+    "prisma": "^4.3.1"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.3.1"
+  }
+}
