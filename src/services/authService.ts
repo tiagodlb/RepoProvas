@@ -14,7 +14,6 @@ import { CreateUserData } from '../types/userTypes.js';
 
 
 async function createUser(user: CreateUserData) {
-    console.log(user);
     const existingUser = await userRepository.findUserByEmail(user.email);
   
     if (existingUser) {
