@@ -12,6 +12,9 @@
     "type": "git",
     "url": "git+https://github.com/tiagodlb/RepoProvas.git"
   },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "author": "",
   "license": "ISC",
   "bugs": {

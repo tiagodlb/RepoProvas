@@ -1,4 +1,5 @@
 import { prisma } from "../database.js";
+import { TermsData } from "../types/termTypte.js";
 
 export async function findById(id: number) {
   return prisma.terms.findUnique({
@@ -46,5 +47,11 @@ export async function findEverything() {
       },
     },
     orderBy: { number: "asc" },
+  });
+}
+
+export async function insertTerm(term: TermsData) {
+  return prisma.terms.create({
+    data: term,
   });
 }

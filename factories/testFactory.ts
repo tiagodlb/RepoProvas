@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 
-export default async function userFactory() {
+export default async function testFactory() {
   return {
     name: faker.lorem.words(2),
     pdfUrl: faker.internet.url(),

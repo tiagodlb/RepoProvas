@@ -1,4 +1,5 @@
 import { prisma } from "../database.js";
+import { TeacherData } from "../types/teacherType.js";
 
 export async function findById(id: number) {
   return prisma.teachers.findUnique({
@@ -31,5 +32,11 @@ export async function findEverything() {
         where: { tests: { some: { id: { not: undefined } } } },
       },
     },
+  });
+}
+
+export async function insertTeacher(teacher: TeacherData) {
+  return prisma.teachers.create({
+    data: teacher,
   });
 }

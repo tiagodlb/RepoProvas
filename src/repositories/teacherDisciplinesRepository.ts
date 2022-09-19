@@ -1,3 +1,4 @@
+import { TeacherDisciplines } from "@prisma/client";
 import { prisma } from "../database.js";
 
 export async function findById(id: number) {
@@ -8,4 +9,10 @@ export async function findById(id: number) {
 
 export async function findEverything() {
   return prisma.teacherDisciplines.findMany();
+}
+
+export async function insertTeacherDiscipline(teacherDiscipline: TeacherDisciplines) {
+  return prisma.teacherDisciplines.create({
+    data: teacherDiscipline,
+  });
 }

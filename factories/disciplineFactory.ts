@@ -1,10 +1,8 @@
 import { faker } from "@faker-js/faker";
 
-export default async function userFactory() {
-  const password = faker.internet.password();
+export default async function disciplineFactory() {
   return {
-    email: faker.internet.email(),
-    password: password,
-    confirmPassword: password,
+    name: faker.random.words(),
+    termId: parseInt(faker.random.numeric())
   };
 }

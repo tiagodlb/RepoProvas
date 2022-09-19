@@ -1,4 +1,5 @@
 import { prisma } from "../database.js";
+import { GetCategoryData } from "../types/categoryType.js";
 
 export async function findById(id: number) {
   return prisma.categories.findUnique({
@@ -15,5 +16,11 @@ export async function findCategoryByName(name: string) {
     where: {
       name,
     },
+  });
+}
+
+export async function insertCategory(category: GetCategoryData) {
+  return prisma.categories.create({
+    data: category,
   });
 }
