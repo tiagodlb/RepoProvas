@@ -10,13 +10,14 @@ import * as teacherDisciplinesRepository from "../repositories/teacherDiscipline
 import * as termsRepository from "../repositories/termRepository.js";
 import { notFoundError } from "../utils/errorUtils.js";
 import {
+  ICategory,
   IDisciplineTeacher,
   IMappedTest,
   ITest,
   ITestIdentifier,
 } from "../types/testByDisciplineType.js";
 
-export async function createTest(test: CreateTestData) {
+async function createTest(test: CreateTestData) {
   const existingCategory = await categoryRepository.findById(test.categoryId);
   if (!existingCategory) {
     throw notFoundError("Category doesn't exist");
@@ -63,25 +64,22 @@ export async function findTestById(id: number) {
   return data;
 }
 
-export async function getAllTestsByDisciplines() {
+async function getAllTestsByDisciplines() {
   const terms = await termsRepository.findEverything();
   const data = {
-    terms: terms.map( (term) => {
+    terms: terms.map((term) => {
       const { number, disciplines } = term;
-      const discipline =  mapCategoriesToDiscipline(disciplines);
+      const discipline = mapCategoriesToDiscipline(disciplines);
       return {
         number,
         discipline,
       };
     }),
   };
-  console.log("!!")
   return data;
 }
 
-export function mapCategoriesToDiscipline(
-  Disciplines: IDisciplineTeacher[]
-) {
+function mapCategoriesToDiscipline(Disciplines: IDisciplineTeacher[]) {
   const disciplines = Disciplines.map((discipline) => {
     const { name, teacherDisciplines: teachersInDiscipline } = discipline;
 
@@ -98,10 +96,7 @@ export function mapCategoriesToDiscipline(
   return disciplines;
 }
 
-export function mapTestsToCategories(
-  tests: ITest[],
-  testIdentifier: ITestIdentifier
-) {
+function mapTestsToCategories(tests: ITest[], testIdentifier: ITestIdentifier) {
   const categoriesMap = new Map<string, IMappedTest[]>();
 
   tests.forEach((test) => {
@@ -123,9 +118,36 @@ export function mapTestsToCategories(
   return testsByCategory;
 }
 
+export async function getAllTestsByTeacher() {
+  const results = await teacherRepository.findEverything();
+
+  const teachers = results.map((teacher) => {
+    const { name, teacherDisciplines } = teacher;
+
+    const categories: ICategory[] = [];
+
+    teacherDisciplines.forEach((teacherDiscipline) => {
+      const { disciplines, tests: tests } = teacherDiscipline;
+      const testCategories = mapTestsToCategories(tests, {
+        discipline: disciplines.name,
+      });
+      testCategories.forEach((category) => categories.push(category));
+    });
+
+    return {
+      name,
+      categories,
+    };
+  });
+
+  return { teachers };
+}
+
 const testsService = {
   createTest,
   findTestById,
+  getAllTestsByDisciplines,
+  getAllTestsByTeacher,
 };
 
 export default testsService;

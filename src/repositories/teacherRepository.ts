@@ -15,5 +15,21 @@ export async function findByName(name: string) {
 }
 
 export async function findEverything() {
-  return prisma.teachers.findMany();
+  return prisma.teachers.findMany({
+    select: {
+      name: true,
+      teacherDisciplines: {
+        select: {
+          disciplines: { select: { name: true } },
+          tests: {
+            select: {
+              name: true,
+              categories: { select: { name: true } },
+            },
+          },
+        },
+        where: { tests: { some: { id: { not: undefined } } } },
+      },
+    },
+  });
 }
