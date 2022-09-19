@@ -173,9 +173,8 @@ export async function testTests() {
 //       const authHeader = { Authorization: "" };
 //       authHeader.Authorization = `${token}`;
 //       const test = await testFactory();
-//       const teste = await APP.post("/tests").set(authHeader).send(test);
-//       console.log(teste.statusCode)
-//       const response = await APP.get("/tests/2").set(authHeader);
+//       await APP.post("/tests").set(authHeader).send(test);
+//       const response = await APP.get("/tests/1").set(authHeader);
 //       expect(response.statusCode).toBe(200);
 //       expect(response.body).toBeInstanceOf(Object);
 //     });
