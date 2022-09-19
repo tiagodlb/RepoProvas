@@ -17,7 +17,7 @@ async function main() {
     { number: 5 },
     { number: 6 },
   ];
-  const teachers = [{ name: "Diego Pinho1" }, { name: "Bruna Hamori1" }];
+  const teachers = [{ name: "Diego Pinho" }, { name: "Bruna Hamori" }];
   const categories = [
     { name: "Projeto" },
     { name: "Prática" },
@@ -27,9 +27,9 @@ async function main() {
     { teacherId: 1, disciplineId: 1 },
     { teacherId: 1, disciplineId: 2 },
     { teacherId: 1, disciplineId: 3 },
-    { teacherId: 2, disciplineId: 4 },
-    { teacherId: 2, disciplineId: 5 },
-    { teacherId: 2, disciplineId: 6 },
+    { teacherId: 2, disciplineId: 1 },
+    { teacherId: 2, disciplineId: 2 },
+    { teacherId: 2, disciplineId: 3 },
   ];
   const disciplines = [
     { name: "HTML e CSS", termId: 1 },
@@ -47,11 +47,11 @@ async function main() {
   disciplines.forEach(async (discipline) => {
     await populateDisciplines(discipline).catch(errorUtil);
   });
-  teacherDisciplines.forEach(async (data) => {
-    await populateTeacherDisciplines(data).catch(errorUtil);
-  });
   teachers.forEach(async (teacher) => {
     await populateTeachers(teacher).catch(errorUtil);
+  });
+  teacherDisciplines.forEach(async (data) => {
+    await populateTeacherDisciplines(data).catch(errorUtil);
   });
   categories.forEach(async (category) => {
     await populateCategories(category).catch(errorUtil);
@@ -81,7 +81,7 @@ async function populateCategories(categories: GetCategoryData) {
 }
 
 async function populateTeachers(teacher: TeacherData) {
-  prisma.teachers.create({
+  await prisma.teachers.create({
     data: teacher,
   });
 }

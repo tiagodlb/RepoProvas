@@ -1,19 +1,17 @@
 import { testSignUp } from "./signup";
 import { prisma } from "../src/database"
 import { testSignIn } from "./signin";
+import { testTests } from "./tests";
 
 beforeEach(async () => {
-  await prisma.$executeRaw`TRUNCATE TABLE "users" CASCADE`
-  await prisma.$executeRaw`TRUNCATE TABLE "categories" CASCADE`
-  await prisma.$executeRaw`TRUNCATE TABLE "tests" CASCADE`
-  await prisma.$executeRaw`TRUNCATE TABLE "teachers" CASCADE`
-  await prisma.$executeRaw`TRUNCATE TABLE "terms" CASCADE`
-  await prisma.$executeRaw`TRUNCATE TABLE "disciplines" CASCADE`
-  await prisma.$executeRaw`TRUNCATE TABLE "teacherDisciplines" CASCADE`
+  await prisma.$executeRaw`TRUNCATE TABLE "users"`
+  await prisma.$executeRaw`TRUNCATE TABLE "tests"`
+
 });
 
 testSignUp();
 testSignIn();
+testTests();
 
 afterAll(async () => {
     await prisma.$disconnect();
