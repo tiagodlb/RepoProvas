@@ -1,5 +1,5 @@
-import { prisma } from "../database.js";
-import { CreateTestData } from "../types/testTypes.js";
+import { prisma } from "../database";
+import { CreateTestData } from "../types/testTypes";
 
 export async function findById(id: number) {
   return prisma.tests.findUnique({
@@ -19,4 +19,8 @@ export async function insertTest(test: CreateTestData) {
   return prisma.tests.create({
     data: test,
   });
+}
+
+export async function findEverything() {
+  return prisma.tests.findMany();
 }

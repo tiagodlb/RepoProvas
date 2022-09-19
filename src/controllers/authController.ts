@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 
-import authService from "../services/authService.js";
+import authService from "../services/authService";
 
 export async function signUp(req: Request, res: Response) {
-  const {email, password} = req.body;
-  const user = {email, password}
+  const { email, password } = req.body;
+  const user = { email, password };
   await authService.createUser(user);
   res.sendStatus(201);
 }

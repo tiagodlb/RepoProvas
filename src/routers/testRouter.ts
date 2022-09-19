@@ -1,12 +1,19 @@
 import { Router } from "express";
-import { getTest, postTest } from "../controllers/testController.js";
-import { ensureAuthenticatedMiddleware } from "../middlewares/authMiddleware.js";
-import { validateSchemaMiddleware } from "../middlewares/validateSchemaMiddleware.js";
-import { testSchema } from "../schemas/testSchema.js";
+import {
+  getTest,
+  getTestByDisciplines,
+  getTestByTeachers,
+  postTest,
+} from "../controllers/testController";
+import { ensureAuthenticatedMiddleware } from "../middlewares/authMiddleware";
+import { validateSchemaMiddleware } from "../middlewares/validateSchemaMiddleware";
+import { testSchema } from "../schemas/testSchema";
 const testRouter = Router();
 
 testRouter.use(ensureAuthenticatedMiddleware);
 testRouter.post("/tests", validateSchemaMiddleware(testSchema), postTest);
 testRouter.get("/tests/:id", getTest);
+testRouter.get("/testsDisciplines", getTestByDisciplines);
+testRouter.get("/testsTeachers", getTestByTeachers);
 
 export default testRouter;
