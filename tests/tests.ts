@@ -155,4 +155,29 @@ export async function testTests() {
       expect(teachers).toBeInstanceOf(Array);
     });
   });
+
+  describe("GET /tests/:id", () => {
+    it("Should return status code 401 if jwt token header is not present", async () => {
+      const response = await APP.get("/tests/1");
+      expect(response.statusCode).toBe(401);
+    });
+
+//     it("Should return status code 200 with terms array in sucess", async () => {
+//       const user = await userFactory();
+//       await APP.post("/signup").send(user);
+//       const { body } = await APP.post("/signin").send({
+//         email: user.email,
+//         password: user.password,
+//       });
+//       const { token } = body;
+//       const authHeader = { Authorization: "" };
+//       authHeader.Authorization = `${token}`;
+//       const test = await testFactory();
+//       const teste = await APP.post("/tests").set(authHeader).send(test);
+//       console.log(teste.statusCode)
+//       const response = await APP.get("/tests/2").set(authHeader);
+//       expect(response.statusCode).toBe(200);
+//       expect(response.body).toBeInstanceOf(Object);
+//     });
+   });
 }
