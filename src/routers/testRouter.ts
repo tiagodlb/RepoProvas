@@ -4,10 +4,10 @@ import {
   getTestByDisciplines,
   getTestByTeachers,
   postTest,
-} from "../controllers/testController.js";
-import { ensureAuthenticatedMiddleware } from "../middlewares/authMiddleware.js";
-import { validateSchemaMiddleware } from "../middlewares/validateSchemaMiddleware.js";
-import { testSchema } from "../schemas/testSchema.js";
+} from "../controllers/testController";
+import { ensureAuthenticatedMiddleware } from "../middlewares/authMiddleware";
+import { validateSchemaMiddleware } from "../middlewares/validateSchemaMiddleware";
+import { testSchema } from "../schemas/testSchema";
 const testRouter = Router();
 
 testRouter.use(ensureAuthenticatedMiddleware);

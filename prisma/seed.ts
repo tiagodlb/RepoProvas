@@ -1,11 +1,11 @@
-import userFactory from "../factories/userFactory.js";
-import * as userRepository from "../src/repositories/userRepository.js";
-import { prisma } from "../src/database.js";
-import { TermsData } from "../src/types/termTypte.js";
-import { DisciplineData } from "../src/types/disciplineType.js";
-import { GetTeacherDisciplinesData } from "../src/types/teacherDisciplineType.js";
-import { TeacherData } from "../src/types/teacherType.js";
-import { GetCategoryData } from "../src/types/categoryType.js";
+import userFactory from "../factories/userFactory";
+import * as userRepository from "../src/repositories/userRepository";
+import { prisma } from "../src/database";
+import { TermsData } from "../src/types/termTypte";
+import { DisciplineData } from "../src/types/disciplineType";
+import { GetTeacherDisciplinesData } from "../src/types/teacherDisciplineType";
+import { TeacherData } from "../src/types/teacherType";
+import { GetCategoryData } from "../src/types/categoryType";
 
 async function main() {
   const user = await userFactory();
@@ -18,7 +18,11 @@ async function main() {
     { number: 6 },
   ];
   const teachers = [{ name: "Diego Pinho1" }, { name: "Bruna Hamori1" }];
-  const categories = [{name: "Projeto"}, {name: "Prática"}, {name: "Recuperação"}];
+  const categories = [
+    { name: "Projeto" },
+    { name: "Prática" },
+    { name: "Recuperação" },
+  ];
   const teacherDisciplines = [
     { teacherId: 1, disciplineId: 1 },
     { teacherId: 1, disciplineId: 2 },
@@ -41,18 +45,17 @@ async function main() {
     await populateTerms(term).catch(errorUtil);
   });
   disciplines.forEach(async (discipline) => {
-    await  populateDisciplines(discipline).catch(errorUtil)
-  })
+    await populateDisciplines(discipline).catch(errorUtil);
+  });
   teacherDisciplines.forEach(async (data) => {
-    await populateTeacherDisciplines(data).catch(errorUtil)
-  })
+    await populateTeacherDisciplines(data).catch(errorUtil);
+  });
   teachers.forEach(async (teacher) => {
-    await populateTeachers(teacher).catch(errorUtil)
-  })
+    await populateTeachers(teacher).catch(errorUtil);
+  });
   categories.forEach(async (category) => {
-    await populateCategories(category).catch(errorUtil)
-  })
-
+    await populateCategories(category).catch(errorUtil);
+  });
 }
 
 async function populateUser(user: {
@@ -73,14 +76,14 @@ async function populateTerms(term: TermsData) {
 
 async function populateCategories(categories: GetCategoryData) {
   await prisma.categories.create({
-    data: categories
-  })
+    data: categories,
+  });
 }
 
 async function populateTeachers(teacher: TeacherData) {
   prisma.teachers.create({
-    data: teacher
-  })
+    data: teacher,
+  });
 }
 
 async function populateTeacherDisciplines(data: GetTeacherDisciplinesData) {
@@ -89,16 +92,14 @@ async function populateTeacherDisciplines(data: GetTeacherDisciplinesData) {
   });
 }
 
-async function populateDisciplines(
-  discipline: DisciplineData
-) {
+async function populateDisciplines(discipline: DisciplineData) {
   await prisma.disciplines.create({
-    data: discipline
-  })
+    data: discipline,
+  });
 }
 
-function errorUtil(){
-  console.dir("You probably already have the seed data!")
+function errorUtil() {
+  console.dir("You probably already have the seed data!");
   return;
 }
 

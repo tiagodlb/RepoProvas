@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
-import testsService from "../services/testService.js";
-import te from "../services/testService.js";
+import testsService from "../services/testService";
 
 export async function postTest(req: Request, res: Response) {
   const test = req.body;

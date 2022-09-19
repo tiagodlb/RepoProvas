@@ -1,14 +1,14 @@
-import { CreateTestData } from "../types/testTypes.js";
+import { CreateTestData } from "../types/testTypes";
 import dotenv from "dotenv";
 dotenv.config({ path: ".env" });
 
-import * as testsRepository from "../repositories/testsRepository.js";
-import * as categoryRepository from "../repositories/categoriesRepository.js";
-import * as disciplineRepository from "../repositories/disciplinesRepository.js";
-import * as teacherRepository from "../repositories/teacherRepository.js";
-import * as teacherDisciplinesRepository from "../repositories/teacherDisciplinesRepository.js";
-import * as termsRepository from "../repositories/termRepository.js";
-import { notFoundError } from "../utils/errorUtils.js";
+import * as testsRepository from "../repositories/testsRepository";
+import * as categoryRepository from "../repositories/categoriesRepository";
+import * as disciplineRepository from "../repositories/disciplinesRepository";
+import * as teacherRepository from "../repositories/teacherRepository";
+import * as teacherDisciplinesRepository from "../repositories/teacherDisciplinesRepository";
+import * as termsRepository from "../repositories/termRepository";
+import { notFoundError } from "../utils/errorUtils";
 import {
   ICategory,
   IDisciplineTeacher,

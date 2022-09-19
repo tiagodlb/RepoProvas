@@ -1,5 +1,5 @@
-import { prisma } from "../database.js";
-import { GetCategoryData } from "../types/categoryType.js";
+import { prisma } from "../database";
+import { GetCategoryData } from "../types/categoryType";
 
 export async function findById(id: number) {
   return prisma.categories.findUnique({

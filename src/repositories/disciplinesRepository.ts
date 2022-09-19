@@ -1,5 +1,5 @@
-import { prisma } from "../database.js";
-import { DisciplineData } from "../types/disciplineType.js";
+import { prisma } from "../database";
+import { DisciplineData } from "../types/disciplineType";
 
 export async function findById(id: number) {
   return prisma.disciplines.findUnique({
