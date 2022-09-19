@@ -20,3 +20,7 @@ export async function insertTest(test: CreateTestData) {
     data: test,
   });
 }
+
+export async function findEverything() {
+  return prisma.tests.findMany();
+}

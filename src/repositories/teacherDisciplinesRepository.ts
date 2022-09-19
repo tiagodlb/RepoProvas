@@ -5,3 +5,7 @@ export async function findById(id: number) {
     where: { id },
   });
 }
+
+export async function findEverything() {
+  return prisma.teacherDisciplines.findMany();
+}

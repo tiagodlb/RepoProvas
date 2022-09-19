@@ -13,3 +13,7 @@ export async function findByName(name: string) {
     },
   });
 }
+
+export async function findEverything() {
+  return prisma.teachers.findMany();
+}

@@ -6,6 +6,10 @@ export async function findById(id: number) {
   });
 }
 
+export async function findEverything() {
+  return prisma.categories.findMany();
+}
+
 export async function findCategoryByName(name: string) {
   return prisma.categories.findUnique({
     where: {

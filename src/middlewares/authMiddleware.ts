@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 import authService from '../services/authService.js';
 dotenv.config();
 
-import { unauthorizedError } from '../utils/errorUtils';
+import { unauthorizedError } from '../utils/errorUtils.js';
 
 export async function ensureAuthenticatedMiddleware(
   req: Request,
